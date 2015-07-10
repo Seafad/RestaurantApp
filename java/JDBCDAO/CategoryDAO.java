@@ -46,8 +46,9 @@ public class CategoryDAO extends JDBCDao<Category>{
                 read.setInt(1, id);
                 ResultSet rs = read.executeQuery();
                 while (rs.next()) {
-               //     cat.setDishes(rs.get);
-               //     cat.setName(rs.getString("name"));
+                    cat.setTitle(rs.getString("title"));
+                    //Category parent = //rs.getInt("parent_id");
+                   // cat.setParent();
                 }
             }
             return cat;

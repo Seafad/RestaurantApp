@@ -7,22 +7,23 @@ package ru.sbi.app.restaurantapp.hibernatedao;
 
 import dao.DAOException;
 import org.apache.log4j.Logger;
-import ru.sbi.app.restaurantapp.model.Contact;
+import ru.sbi.app.restaurantapp.model.Dish;
+
 
 /**
  *
  * @author Vladimir
- *
  */
-public class ContactDao extends HibernateDao<Contact> {
 
-    private static final Logger log = Logger.getLogger(ContactDao.class.getName());
+public class DishDao extends HibernateDao<Dish> {
+
+    private static final Logger log = Logger.getLogger(DishDao.class.getName());
 
     @Override
-    public void create(Contact cont) throws DAOException {
+    public void create(Dish d) throws DAOException {
         try {
             connect();
-            session.save(cont);
+            session.save(d);
             tx.commit();
         } catch (Exception ex) {
             log.error("Transaction failure", ex);
@@ -34,11 +35,11 @@ public class ContactDao extends HibernateDao<Contact> {
     }
 
     @Override
-    public Contact read(int id) throws DAOException {
-        Contact cont = new Contact();
+    public Dish read(int id) throws DAOException {
+        Dish d = new Dish();
         try {
             connect();
-            cont = (Contact) session.get(Contact.class, id);
+            d = (Dish) session.get(Dish.class, id);
 
         } catch (Exception ex) {
             log.error("Transaction failure", ex);
@@ -47,15 +48,15 @@ public class ContactDao extends HibernateDao<Contact> {
         } finally {
             disconnect();
         }
-        return cont;
+        return d;
     }
 
     @Override
-    public void update(Contact cont) throws DAOException {
+    public void update(Dish d) throws DAOException {
         try {
             connect();
-            session.update(cont);
-            tx.commit();
+            session.update(d);
+
         } catch (Exception ex) {
             log.error("Transaction failure", ex);
             tx.rollback();
@@ -67,7 +68,7 @@ public class ContactDao extends HibernateDao<Contact> {
 
     @Override
     public void delete(int id) throws DAOException {
-        Contact c = new Contact();
+        Dish c = new Dish();
         try {
             connect();
             c.setId(id);
@@ -83,7 +84,7 @@ public class ContactDao extends HibernateDao<Contact> {
     }
 
     @Override
-    public void delete(Contact cont) throws DAOException {
+    public void delete(Dish cont) throws DAOException {
         try {
             connect();
             session.delete(cont);

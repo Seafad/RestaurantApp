@@ -3,16 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hibernatedao;
+package ru.sbi.app.restaurantapp.hibernatedao;
 
 import dao.DAO;
 import dao.DAOException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import ru.sbi.app.restaurantapp.util.HibernateUtil;
 
 /**
  *
- * @author wsad
+ * @author Vladimir
  */
-public abstract class HibernateDao<T> implements DAO<T>{
+public abstract class HibernateDao<T> implements DAO<T> {
+
+    protected static SessionFactory sessionFactory = null;
+    public Session session = null;
+    protected Transaction tx = null;
+
+    public void connect() {
+        sessionFactory = HibernateUtil.getSessionFactory();
+        session = sessionFactory.openSession();
+        tx = session.beginTransaction();
+    }
+
+    protected void disconnect() {
+        if (session != null) {
+            session.close();
+        }
+    }
 
     @Override
     public abstract void delete(T entity) throws DAOException;
@@ -29,5 +49,4 @@ public abstract class HibernateDao<T> implements DAO<T>{
     @Override
     public abstract void create(T entity) throws DAOException;
 
-    
 }

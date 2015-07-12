@@ -1,18 +1,37 @@
-package model;
+package ru.sbi.app.restaurantapp.model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author Vladimir
  */
-public class Category {
-    private int id;
-    private Category parent;
-    private List<Dish> dishes = new ArrayList<>();
-    private String title;
+@Entity
+@Table(name = "Categories")
+public class Category implements Serializable {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "category_id")
+    private int id;
+    
+    private Category parent;
+    
+    @OneToMany (mappedBy = "category")
+    private Set<Dish> dishes = new HashSet<>();
+    private String title;
+    
+    public Category(){}
+    
     public int getId() {
         return id;
     }
@@ -29,13 +48,14 @@ public class Category {
         this.parent = parent;
     }
 
-    public List<Dish> getDishes() {
+    public Set<Dish> getDishes() {
         return dishes;
     }
 
-    public void setDishes(List<Dish> dishes) {
+    public void setDishes(Set<Dish> dishes) {
         this.dishes = dishes;
     }
+
 
     public String getTitle() {
         return title;
@@ -44,5 +64,5 @@ public class Category {
     public void setTitle(String title) {
         this.title = title;
     }
-    
+
 }

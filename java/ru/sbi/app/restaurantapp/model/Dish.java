@@ -1,17 +1,42 @@
-package model;
+package ru.sbi.app.restaurantapp.model;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Vladimir
  */
-public class Dish {
 
+@Entity
+@Table(name = "Dishes")
+public class Dish implements Serializable {
+    @Id
+    @GeneratedValue
+    @Column(name = "dish_id")
     private int id;
+    
+    @Column (name = "title")
     private String title;
+    
+    @Column (name = "description")
     private String description;
+    
+    @Column (name = "price")
     private float price;
-    private int categoryId;
+    
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
+    public Dish(){}
+    
     public int getId() {
         return id;
     }
@@ -44,12 +69,12 @@ public class Dish {
         this.price = price;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
 }

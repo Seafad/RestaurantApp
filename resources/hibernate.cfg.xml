@@ -8,10 +8,13 @@
         <property name="format_sql">true</property>
         <property name="dialect">org.hibernate.dialect.SQLiteDialect</property>
         <property name="connection.driver_class">org.sqlite.JDBC</property>
-        <property name="connection.url">jdbc:sqlite:test2.db</property>
+        <property name="connection.url">jdbc:sqlite:test.db</property>
         <property name="connection.username"></property>
         <property name="connection.password"></property>
         <property name="hibernate.hbm2ddl.auto">update</property>        
-        <mapping class="model.Contact"/>
+        <mapping class="ru.sbi.app.restaurantapp.model.Contact"/>
+        <mapping class="ru.sbi.app.restaurantapp.model.Category"/>
+        <mapping class="ru.sbi.app.restaurantapp.model.Dish"/>
+        <mapping class="ru.sbi.app.restaurantapp.model.Order"/>
     </session-factory>
 </hibernate-configuration>

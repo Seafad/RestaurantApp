@@ -1,13 +1,29 @@
 package model;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author Vladimir
  */
-public class Contact {
+@Entity
+@Table(name = "Contacts")
+public class Contact implements Serializable {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "contact_id")
     private int id;
+    @Column(name = "eMail")
     private String email;
+    @Column(name = "name")
     private String name;
+    @Column(name = "phone")
     private String phone;
 
     public int getId() {

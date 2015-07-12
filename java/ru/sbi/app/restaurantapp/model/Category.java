@@ -1,4 +1,4 @@
-package model;
+package ru.sbi.app.restaurantapp.model;
 
 import java.util.ArrayList;
 import java.util.List;

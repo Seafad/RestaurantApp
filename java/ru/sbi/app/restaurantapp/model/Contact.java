@@ -1,9 +1,10 @@
-package model;
+package ru.sbi.app.restaurantapp.model;
 
 /**
  *
  * @author Vladimir
  */
+
 public class Contact {
     private int id;
     private String email;

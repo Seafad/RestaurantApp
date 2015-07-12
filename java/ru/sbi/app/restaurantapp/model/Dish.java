@@ -1,4 +1,4 @@
-package model;
+package ru.sbi.app.restaurantapp.model;
 
 /**
  *

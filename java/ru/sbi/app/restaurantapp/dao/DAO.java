@@ -1,4 +1,4 @@
-package dao;
+package ru.sbi.app.restaurantapp.dao;
 
 /**
  *

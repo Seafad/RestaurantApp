@@ -68,11 +68,11 @@ public class DishDao extends HibernateDao<Dish> {
 
     @Override
     public void delete(int id) throws DAOException {
-        Dish c = new Dish();
+        Dish d = new Dish();
         try {
             connect();
-            c.setId(id);
-            session.delete(c);
+            d.setId(id);
+            session.delete(d);
             tx.commit();
         } catch (Exception ex) {
             log.error("Transaction failure", ex);
@@ -84,10 +84,10 @@ public class DishDao extends HibernateDao<Dish> {
     }
 
     @Override
-    public void delete(Dish cont) throws DAOException {
+    public void delete(Dish d) throws DAOException {
         try {
             connect();
-            session.delete(cont);
+            session.delete(d);
             tx.commit();
         } catch (Exception ex) {
             log.error("Transaction failure", ex);

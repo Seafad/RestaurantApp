@@ -22,8 +22,7 @@ public class Contact implements Serializable {
     @Column(name = "contact_id")
     private int id;
 
-    @OneToOne
-    @JoinColumn(name = "category_id")
+    @Column(name = "category_id")
     private Category category;
 
     @Column(name = "eMail")

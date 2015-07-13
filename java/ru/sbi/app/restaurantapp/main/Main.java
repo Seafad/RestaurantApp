@@ -1,7 +1,6 @@
 package ru.sbi.app.restaurantapp.main;
 
 import dao.DAOException;
-import java.util.List;
 import ru.sbi.app.restaurantapp.hibernatedao.ContactDao;
 import ru.sbi.app.restaurantapp.model.Contact;
 
@@ -14,10 +13,13 @@ public class Main {
         con.setName("John");
         con.setPhone("89057872728");
         cd.create(con);
-        cd.connect();
-        List<Contact> contactList = cd.session.createQuery("from Contact").list();
-        for (Contact contact : contactList) {
-            System.out.println("Id: " + contact.getId() + " | Name:" + contact.getName() + " | Email:" + contact.getEmail());
-        }
+        ContactDao cd2 = new ContactDao();
+        Contact con2 = new Contact();
+        con2.setEmail("mymail");
+        con2.setName("John");
+        con2.setPhone("89057872728");
+        cd2.create(con2);
+        cd2.showAll();
+
     }
 }

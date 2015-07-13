@@ -6,6 +6,9 @@
 package ru.sbi.app.restaurantapp.hibernatedao;
 
 import dao.DAOException;
+import java.time.Instant;
+import java.util.Date;
+import java.util.List;
 import org.apache.log4j.Logger;
 import ru.sbi.app.restaurantapp.model.Order;
 
@@ -87,6 +90,23 @@ public class OrderDao extends HibernateDao<Order> {
         try {
             connect();
             session.delete(ord);
+            tx.commit();
+        } catch (Exception ex) {
+            log.error("Transaction failure", ex);
+            tx.rollback();
+            throw new DAOException(ex);
+        } finally {
+            disconnect();
+        }
+    }
+    @Deprecated
+    public void showAll() throws DAOException {
+        try {
+            connect();
+            List<Order> contactList = session.createQuery("from Order").list();
+            for (Order contact : contactList) {
+                System.out.println("Id: " + contact.getId() + " | Date:" + Date.from(Instant.ofEpochSecond(contact.getDateTime())) + " | Contact:" + contact.getContact());
+            }
             tx.commit();
         } catch (Exception ex) {
             log.error("Transaction failure", ex);

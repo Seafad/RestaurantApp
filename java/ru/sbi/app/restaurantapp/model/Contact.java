@@ -5,8 +5,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,25 +15,17 @@ import javax.persistence.Table;
 @Table(name = "Contacts")
 public class Contact implements Serializable {
 
+    private int id;
+    private String email;
+    private String name;
+    private String phone;
+
+    public Contact() {
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "contact_id")
-    private int id;
-
-    @Column(name = "category_id")
-    private Category category;
-
-    @Column(name = "eMail")
-    private String email;
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "phone")
-    private String phone;
-    
-    public Contact(){}
-    
     public int getId() {
         return id;
     }
@@ -44,14 +34,7 @@ public class Contact implements Serializable {
         this.id = id;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
+    @Column(name = "eMail")
     public String getEmail() {
         return email;
     }
@@ -60,6 +43,7 @@ public class Contact implements Serializable {
         this.email = email;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -68,6 +52,7 @@ public class Contact implements Serializable {
         this.name = name;
     }
 
+    @Column(name = "phone")
     public String getPhone() {
         return phone;
     }

@@ -15,7 +15,7 @@ import ru.sbi.app.restaurantapp.util.HibernateUtil;
 /**
  *
  * @author Vladimir
- */
+ */                            // T extends model?
 public abstract class HibernateDao<T> implements DAO<T> {
 
     protected static SessionFactory sessionFactory = null;
@@ -33,7 +33,7 @@ public abstract class HibernateDao<T> implements DAO<T> {
             session.close();
         }
     }
-
+    
     @Override
     public abstract void delete(T entity) throws DAOException;
 

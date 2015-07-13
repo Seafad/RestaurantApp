@@ -6,6 +6,7 @@
 package ru.sbi.app.restaurantapp.hibernatedao;
 
 import dao.DAOException;
+import java.util.List;
 import org.apache.log4j.Logger;
 import ru.sbi.app.restaurantapp.model.Contact;
 
@@ -96,5 +97,22 @@ public class ContactDao extends HibernateDao<Contact> {
             disconnect();
         }
     }
-
+    @Deprecated
+    public void showAll() throws DAOException {
+        try {
+            connect();
+            List<Contact> contactList = session.createQuery("from Contact").list();
+            for (Contact contact : contactList) {
+                System.out.println("Id: " + contact.getId() + " | Name:" + contact.getName() + " | Email:" + contact.getEmail()
+                 + " | Phone:" + contact.getPhone());
+            }
+            tx.commit();
+        } catch (Exception ex) {
+            log.error("Transaction failure", ex);
+            tx.rollback();
+            throw new DAOException(ex);
+        } finally {
+            disconnect();
+        }
+    }
 }

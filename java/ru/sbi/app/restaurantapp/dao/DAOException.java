@@ -1,13 +1,18 @@
-package dao;
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ru.sbi.app.restaurantapp.dao;
 
 /**
  *
  * @author Vladimir
  */
-public class DAOException extends Exception {
+public class DaoException extends Exception {
 
-    public DAOException(Exception ex) {
+    public DaoException(Exception ex) {
         super(ex);
     }
+
 }

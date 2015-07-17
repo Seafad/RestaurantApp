@@ -1,16 +1,15 @@
 package ru.sbi.app.restaurantapp.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,23 +20,20 @@ import javax.persistence.Table;
 @Table(name = "Categories")
 public class Category implements Serializable {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "category_id")
     private int id;
 
- //   @ManyToOne
- //   @JoinColumn(name = "parent")
     private Category parent;
 
-    @OneToMany
-    private Set<Dish> dishes = new HashSet<>();
+    private List<Dish> dishes;
 
     private String title;
 
     public Category() {
     }
 
+    @Id
+    @GeneratedValue
+    @Column(name = "category_id")
     public int getId() {
         return id;
     }
@@ -46,6 +42,7 @@ public class Category implements Serializable {
         this.id = id;
     }
 
+    @ManyToOne
     public Category getParent() {
         return parent;
     }
@@ -54,11 +51,12 @@ public class Category implements Serializable {
         this.parent = parent;
     }
 
-    public Set<Dish> getDishes() {
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "category")
+    public List<Dish> getDishes() {
         return dishes;
     }
 
-    public void setDishes(Set<Dish> dishes) {
+    public void setDishes(List<Dish> dishes) {
         this.dishes = dishes;
     }
 

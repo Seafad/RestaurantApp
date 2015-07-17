@@ -1,45 +1,38 @@
 package ru.sbi.app.restaurantapp.model;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
  *
  * @author Vladimir
  */
-
 @Entity
 @Table(name = "Dishes")
 public class Dish implements Serializable {
+
+    private int id;
+
+    private String title;
+
+    private String description;
+
+    private float price;
+
+    private Category category;
+
+    public Dish() {
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "dish_id")
-    private int id;
-    
-    @Column (name = "title")
-    private String title;
-    
-    @Column (name = "description")
-    private String description;
-    
-    @Column (name = "price")
-    private float price;
-    
-    @OneToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
-
-    public Dish(){}
-    
     public int getId() {
         return id;
     }
@@ -48,6 +41,7 @@ public class Dish implements Serializable {
         this.id = id;
     }
 
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -56,6 +50,7 @@ public class Dish implements Serializable {
         this.title = title;
     }
 
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -64,6 +59,7 @@ public class Dish implements Serializable {
         this.description = description;
     }
 
+    @Column(name = "price")
     public float getPrice() {
         return price;
     }
@@ -72,6 +68,8 @@ public class Dish implements Serializable {
         this.price = price;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
     public Category getCategory() {
         return category;
     }

@@ -19,6 +19,7 @@ public class Contact implements Serializable {
     private String email;
     private String name;
     private String phone;
+    private String address;
 
     public Contact() {
     }
@@ -60,4 +61,14 @@ public class Contact implements Serializable {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Column(name = "address")
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
 }

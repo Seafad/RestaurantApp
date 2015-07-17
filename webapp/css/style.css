@@ -1,0 +1,97 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16.07.2015, 12:53:23
+    Author     : Vladimir
+*/
+
+*{
+    padding: 0;
+    margin: 0
+}
+body{
+    background-color: darkred;
+}
+hr{
+    border: none;
+    height: 1px;
+    margin-bottom: 15px;
+    background: transparent;
+    background-image: linear-gradient(to right,  rgba(200,20,0,1) 75%, rgba(0,0,0,0) 95%);
+}
+
+h1{
+    margin-top: 5px;
+}
+
+form{
+    width: 75%;
+    padding: 10px 2.5%;
+    margin: 20px auto;
+    background-color: bisque;
+    border-radius: 15px;
+    font-family: sans-serif;
+    box-shadow: inset -2px -1px 15px rgba(122, 20, 20, 1);
+}
+
+form input{
+    padding: 4px;
+}
+
+#filePath, #download{
+    margin: 0 auto;
+}
+
+.message{
+    margin: 20px 2.5%;
+    padding: 1%;
+    background-color: beige;
+    border: dashed 2px brown;
+    text-align: center;
+}
+.message span{
+    font-weight: bolder; 
+    color: red;
+}
+
+form input{
+    margin: 0 0 10px 0;
+}
+
+#submit{
+    width: 20%;
+    margin: 0 40%;
+}
+
+#submit2{
+    background: greenyellow;
+    width: 50%;
+    margin: 0 25%;
+    font-family: sans-serif;
+    font-size: 2em;
+    border: 2px outset greenyellow;
+    outline: none;
+}
+
+#submit2:hover{
+    background: green;
+    border: 2px outset green;
+}
+
+.contact{
+    width: 75%;
+    padding: 10px 2.5%;
+    margin: 20px auto;
+    background-color: bisque;
+    border-radius: 15px;
+    box-shadow: inset -2px -1px 15px rgba(122, 20, 20, 1);
+    font-family: sans-serif;
+
+}
+.contact p{
+    margin: 0  0 5px 0 ;
+    font-size: 1.5em;
+}
